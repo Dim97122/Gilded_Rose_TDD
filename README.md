@@ -1,1 +1,1 @@
-# SPA-ProGame
+# GILDED ROSES KATA
