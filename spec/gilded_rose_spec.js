@@ -1,4 +1,4 @@
-var { Shop, Item } = require('../src/js/index.js');
+var { Shop, Item } = require('../src/js/gilded_rose.js');
 describe("GildedRose shop manager", function () {
   var listItems;
 
@@ -38,6 +38,17 @@ describe("GildedRose shop manager", function () {
     expected.forEach(function (testCase, idx) {
       expect(items[idx].quality).toBe(testCase.quality);
       expect(items[idx].sellIn).toBe(testCase.sellIn);
+    });
+  });
+
+  it("Vérifier que la qualité d'un Item ne peut être négative", function () {
+    listItems.push(new Item("coco", 20, 0));
+
+    const gildedRose = new Shop(listItems);
+    const items = gildedRose.updateQuality();
+
+    items.forEach(function (testCase, id) {
+      expect(items[id].quality).toBe(0);
     });
   });
 });
